@@ -171,8 +171,8 @@ export default function Home() {
       <section className="py-24 px-6 bg-[#f5f5f7] relative overflow-hidden">
         {/* Generated background image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-[0.05]"
-          style={{ backgroundImage: "url('/target_industries_bg.png')" }}
+          className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-[0.08]"
+          style={{ backgroundImage: "url('/target_industries_live.png')" }}
         />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl mb-16">

@@ -112,7 +112,7 @@ export default function Home() {
   return (
     <div className="relative w-full overflow-hidden bg-background">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[92vh] flex items-center pt-24 px-6 bg-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-24 px-6 bg-white  overflow-hidden">
         {/* Siri-style Wave Background */}
         <HeroCanvas />
 

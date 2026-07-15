@@ -33,23 +33,22 @@ export default function Navbar() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 transition-all duration-300 border rounded-full px-6 py-2.5 ${
           scrolled
-            ? "glass-panel border-border-custom py-3 shadow-apple"
-            : "bg-transparent border-transparent py-5"
+            ? "glass-panel border-slate-200/80 shadow-apple"
+            : "bg-white/85 backdrop-blur-md border-slate-200/60 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-7 h-7 rounded-lg bg-slate-950 flex items-center justify-center shadow-sm">
-              <span className="text-white font-sans text-xs font-bold">T</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-sans font-semibold tracking-tight text-[#1d1d1f] text-md">
-                TES Solutions
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group">
+            <svg viewBox="0 0 120 40" className="w-[110px] h-[36px] select-none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="2" width="100" height="3.5" rx="1" fill="#0A2540" />
+              <text x="13" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#E31837">T</text>
+              <text x="50" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#0071E3">E</text>
+              <text x="87" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#1D1D1F">S</text>
+              <text x="13" y="34" fontFamily="var(--font-sans), sans-serif" fontSize="7.5" fontWeight="600" letterSpacing="2.8" fill="#1D1D1F">SOLUTIONS</text>
+            </svg>
           </Link>
 
           {/* Desktop Navigation */}

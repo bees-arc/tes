@@ -19,13 +19,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Vision */}
           <div className="md:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-6.5 h-6.5 rounded-lg bg-slate-950 flex items-center justify-center shadow-sm">
-                <span className="text-white font-sans text-xs font-bold">T</span>
-              </div>
-              <span className="font-sans font-semibold tracking-tight text-[#1d1d1f] text-md">
-                TES Solutions
-              </span>
+            <Link href="/" className="flex items-center group">
+              <svg viewBox="0 0 120 40" className="w-[110px] h-[36px] select-none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="2" width="100" height="3.5" rx="1" fill="#0A2540" />
+                <text x="13" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#E31837">T</text>
+                <text x="50" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#0071E3">E</text>
+                <text x="87" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#1D1D1F">S</text>
+                <text x="13" y="34" fontFamily="var(--font-sans), sans-serif" fontSize="7.5" fontWeight="600" letterSpacing="2.8" fill="#1D1D1F">SOLUTIONS</text>
+              </svg>
             </Link>
             <p className="text-[#86868b] text-sm max-w-sm font-sans leading-relaxed">
               Orchestrating smart business operations through complete, end-to-end technology solutions across software, automation, IoT, embedded systems, and robotics.

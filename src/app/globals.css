@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1d1d1f;
+  --accent: #0071e3; /* Apple Blue */
+  --accent-dim: #0058b0;
+  --accent-rgb: 0, 113, 227;
+  --panel: #f5f5f7; /* Apple Gray */
+  --panel-border: #e8e8ed;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-panel: var(--panel);
+  --color-border-custom: var(--panel-border);
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d2d2d7;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #86868b;
+}
+
+/* Apple-style UI Utilities */
+.shadow-apple {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-apple-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-apple-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.glass-panel-dark {
+  background: rgba(29, 29, 31, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Flat clean gray grids */
+.grid-bg {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+}
+
+.grid-bg-fine {
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 1px, transparent 1px);
+}
+
+/* Subtle dot layout */
+.dot-bg {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Apple card style standard */
+.apple-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e8e8ed;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+}
+
+.apple-card-gray {
+  background: #f5f5f7;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}

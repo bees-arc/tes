@@ -133,7 +133,7 @@ export default function Home() {
   return (
     <div className="relative w-full overflow-hidden bg-background">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex items-center pt-24 px-6 bg-gradient-to-b from-[#020205] via-[#081226] to-[#020617] overflow-hidden">
+      <section className="relative min-h-dvh flex items-center pt-20 md:pt-24 px-6 bg-gradient-to-b from-[#020205] via-[#081226] to-[#020617] overflow-hidden">
         {/* Siri-style Wave Background */}
         <HeroCanvas />
 

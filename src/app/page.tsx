@@ -135,6 +135,46 @@ export default function Home() {
         <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] bg-blue-500/10 rounded-full blur-[80px] pointer-events-none animate-pulse z-0" style={{ animationDuration: "8s" }} />
         <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse z-0" style={{ animationDuration: "12s" }} />
 
+        {/* Moving Dust Particles on Mobile Viewport Only */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none md:hidden z-0">
+          <style>{`
+            @keyframes float-particle-top {
+              0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
+              50% { opacity: 0.5; }
+              100% { transform: translate(15px, -30px) scale(1.2); opacity: 0; }
+            }
+            @keyframes float-particle-bottom {
+              0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
+              50% { opacity: 0.5; }
+              100% { transform: translate(-15px, 30px) scale(1.2); opacity: 0; }
+            }
+            .dust-top {
+              animation: float-particle-top 7s infinite ease-in-out;
+            }
+            .dust-bottom {
+              animation: float-particle-bottom 9s infinite ease-in-out;
+            }
+          `}</style>
+
+          {/* Top-Middle Dust Group */}
+          <div className="absolute top-[12%] left-1/2 -translate-x-1/2 w-48 h-20 flex justify-center items-center">
+            <div className="dust-top absolute w-1 h-1 bg-[#38bdf8] rounded-full blur-[0.5px]" style={{ left: '10%', top: '20%', animationDelay: '0s' }} />
+            <div className="dust-top absolute w-1.5 h-1.5 bg-[#38bdf8] rounded-full blur-[0.5px]" style={{ left: '40%', top: '60%', animationDelay: '2s' }} />
+            <div className="dust-top absolute w-1 h-1 bg-[#38bdf8] rounded-full blur-[0.5px]" style={{ left: '70%', top: '30%', animationDelay: '4s' }} />
+            <div className="dust-top absolute w-1.5 h-1.5 bg-white rounded-full blur-[0.5px]" style={{ left: '50%', top: '10%', animationDelay: '1.5s' }} />
+            <div className="dust-top absolute w-1 h-1 bg-white rounded-full blur-[0.5px]" style={{ left: '85%', top: '75%', animationDelay: '5s' }} />
+          </div>
+
+          {/* Bottom-Middle Dust Group */}
+          <div className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-48 h-20 flex justify-center items-center">
+            <div className="dust-bottom absolute w-1.5 h-1.5 bg-[#38bdf8] rounded-full blur-[0.5px]" style={{ left: '20%', bottom: '20%', animationDelay: '1s' }} />
+            <div className="dust-bottom absolute w-1 h-1 bg-[#38bdf8] rounded-full blur-[0.5px]" style={{ left: '50%', bottom: '60%', animationDelay: '3.5s' }} />
+            <div className="dust-bottom absolute w-1.5 h-1.5 bg-white rounded-full blur-[0.5px]" style={{ left: '80%', bottom: '30%', animationDelay: '0.5s' }} />
+            <div className="dust-bottom absolute w-1 h-1 bg-white rounded-full blur-[0.5px]" style={{ left: '35%', bottom: '70%', animationDelay: '2.5s' }} />
+            <div className="dust-bottom absolute w-1.5 h-1.5 bg-[#38bdf8] rounded-full blur-[0.5px]" style={{ left: '65%', bottom: '15%', animationDelay: '5.5s' }} />
+          </div>
+        </div>
+
         {/* Soft radial grid overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-40 z-0" style={{ backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent pointer-events-none z-0" />

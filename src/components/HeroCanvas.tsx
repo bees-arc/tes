@@ -37,7 +37,7 @@ export default function HeroCanvas() {
     // Shift globe right responsively on start
     const isMobile = window.innerWidth < 768;
     globeGroup.position.x = isMobile ? 0 : 18.5;
-    globeGroup.position.y = isMobile ? -12 : 0;
+    globeGroup.position.y = 0; // Vertically centered
     if (isMobile) {
       globeGroup.scale.set(0.65, 0.65, 0.65);
     }
@@ -229,7 +229,7 @@ export default function HeroCanvas() {
       // Responsive shifting on resize
       if (width < 768) {
         globeGroup.position.x = 0;
-        globeGroup.position.y = -12;
+        globeGroup.position.y = 0; // Vertically centered
         globeGroup.scale.set(0.65, 0.65, 0.65);
       } else {
         globeGroup.position.x = 18.5;

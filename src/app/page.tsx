@@ -172,7 +172,10 @@ export default function Home() {
         {/* Generated background image */}
         <div 
           className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-[0.08]"
-          style={{ backgroundImage: "url('/target_industries_live.png')" }}
+          style={{ 
+            backgroundImage: "url('/target_industries_live.png')",
+            filter: "hue-rotate(200deg) saturate(1.8) brightness(1.1)"
+          }}
         />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl mb-16">

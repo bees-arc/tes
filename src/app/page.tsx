@@ -30,7 +30,7 @@ const HeroCanvas = dynamic(() => import("@/components/HeroCanvas"), {
 });
 
 export default function Home() {
-  const [activeCtaTab, setActiveCtaTab] = useState<"solutions" | "contact" | null>(null);
+  const [activeCtaTab, setActiveCtaTab] = useState<"solutions" | "contact">("solutions");
   const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   useEffect(() => {
@@ -38,14 +38,8 @@ export default function Home() {
     const handleResize = () => setIsMobileDevice(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
 
-    const handleWindowClick = () => {
-      setActiveCtaTab(null);
-    };
-    window.addEventListener("click", handleWindowClick);
-
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("click", handleWindowClick);
     };
   }, []);
 

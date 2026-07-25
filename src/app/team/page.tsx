@@ -214,7 +214,7 @@ export default function Team() {
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-4 pt-4 border-t border-slate-100 font-sans text-xs text-[#86868b]">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-4 border-t border-slate-100 font-sans text-xs text-[#86868b]">
                   <a
                     href={leader.linkedIn}
                     target="_blank"
@@ -297,7 +297,7 @@ export default function Team() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {tools.map((tool) => (
               <div
                 key={tool.name}

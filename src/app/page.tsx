@@ -112,30 +112,30 @@ export default function Home() {
   return (
     <div className="relative w-full overflow-hidden bg-background">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex items-center pt-24 px-6 bg-white  overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-24 px-6 bg-gradient-to-b from-[#020205] via-[#081226] to-[#020617] overflow-hidden">
         {/* Siri-style Wave Background */}
         <HeroCanvas />
 
         {/* Soft radial grid overlay */}
-        <div className="absolute inset-0 dot-bg pointer-events-none opacity-40 z-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none z-0" />
+        <div className="absolute inset-0 pointer-events-none opacity-40 z-0" style={{ backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent pointer-events-none z-0" />
         
-        <div className="max-w-5xl mx-auto w-full relative z-10 text-center flex flex-col items-center gap-6">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center gap-6"
+            className="flex flex-col items-center md:items-start text-center md:text-left gap-6 max-w-2xl"
           >
             {/* Status Chip */}
-            <motion.div variants={itemVariants} className="px-3.5 py-1 rounded-full border border-slate-200/80 bg-slate-50 font-sans text-xs tracking-normal text-slate-600 font-semibold shadow-sm">
+            <motion.div variants={itemVariants} className="px-3.5 py-1 rounded-full border border-blue-500/25 bg-blue-500/10 font-sans text-xs tracking-normal text-blue-400 font-semibold shadow-sm">
               Enterprise Technology Solutions
             </motion.div>
 
             {/* Headline */}
             <motion.h1 
               variants={itemVariants} 
-              className="text-4xl md:text-6xl font-sans font-bold tracking-tight text-[#1d1d1f] leading-[1.1] max-w-4xl"
+              className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-350 leading-[1.1]"
             >
               Complete Technology Solutions for Modern Businesses
             </motion.h1>
@@ -143,7 +143,7 @@ export default function Home() {
             {/* Subheading */}
             <motion.p 
               variants={itemVariants} 
-              className="text-lg md:text-xl text-[#515154] max-w-2xl font-sans leading-relaxed"
+              className="text-lg md:text-xl text-slate-300 max-w-xl font-sans leading-relaxed"
             >
               We deliver end-to-end technology solutions across software development, automation, IoT, AI, embedded systems, robotics, digital platforms, and smart business solutions.
             </motion.p>
@@ -158,7 +158,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/contact"
-                className="group flex items-center gap-1.5 font-sans font-semibold text-sm text-[#0071e3] hover:underline"
+                className="group flex items-center gap-1.5 font-sans font-semibold text-sm text-[#38bdf8] hover:text-white hover:underline transition-colors"
               >
                 Contact our team
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

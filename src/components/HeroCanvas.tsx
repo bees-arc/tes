@@ -81,30 +81,6 @@ export default function HeroCanvas() {
     const particles = new THREE.Points(pointsGeometry, pointsMaterial);
     tiltedGlobe.add(particles);
 
-    // Background floating dust particles (Starfield)
-    const starFieldGeometry = new THREE.BufferGeometry();
-    const starFieldCount = 200;
-    const starFieldPositions = new Float32Array(starFieldCount * 3);
-    for (let i = 0; i < starFieldCount * 3; i += 3) {
-      starFieldPositions[i] = (Math.random() - 0.5) * 80;
-      starFieldPositions[i + 1] = (Math.random() - 0.5) * 80;
-      starFieldPositions[i + 2] = (Math.random() - 0.5) * 80;
-    }
-    starFieldGeometry.setAttribute("position", new THREE.BufferAttribute(starFieldPositions, 3));
-    
-    const starFieldMaterial = new THREE.PointsMaterial({
-      color: 0x38bdf8,
-      size: 0.22,
-      map: particleTexture,
-      transparent: true,
-      opacity: 0.0, // Fade in along with globe
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-    
-    const starField = new THREE.Points(starFieldGeometry, starFieldMaterial);
-    scene.add(starField);
-
     // Load World Map Image & Sample Pixels
     const img = new Image();
     img.src = "/earth-water.png";
@@ -165,7 +141,7 @@ export default function HeroCanvas() {
       pointsGeometry.computeBoundingSphere();
     };
 
-    // MOUSE INTERACTION VARIABLES
+    // MOUSE & TOUCH INTERACTION VARIABLES
     let mouseX = 0;
     let mouseY = 0;
     let prevMouseX = 0;
@@ -194,6 +170,56 @@ export default function HeroCanvas() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+
+    // TOUCH SWIPE/ZOOM TRACKING (MOBILE)
+    let isTouching = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.touches.length === 0) return;
+      isTouching = true;
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+      targetZ = 36; // Zoom in on touch!
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length === 0 || !isTouching) return;
+      const currentX = event.touches[0].clientX;
+      const currentY = event.touches[0].clientY;
+      
+      const deltaX = currentX - touchStartX;
+      const deltaY = currentY - touchStartY;
+      
+      // Normalize swipe offsets
+      const normDeltaX = deltaX / window.innerWidth;
+      
+      // Spin the globe directly based on drag direction
+      spinAngle += normDeltaX * 2.0;
+      
+      // Accumulate velocity to spin with inertia on release
+      spinVelocity += Math.abs(normDeltaX) * 0.25;
+      
+      // Tilt parallax matches touch position
+      targetX = (currentX - window.innerWidth / 2) / (window.innerWidth / 2);
+      targetY = (currentY - window.innerHeight / 2) / (window.innerHeight / 2);
+      
+      // Maintain zoom-in
+      targetZ = 36;
+      
+      touchStartX = currentX;
+      touchStartY = currentY;
+    };
+
+    const handleTouchEnd = () => {
+      isTouching = false;
+      targetZ = 50; // Zoom back out on release
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
 
     // ANIMATION LOOP
     const clock = new THREE.Clock();
@@ -229,16 +255,9 @@ export default function HeroCanvas() {
       if (pointsMaterial.opacity < 0.6) {
         pointsMaterial.opacity += 0.015;
       }
-      if (starFieldMaterial.opacity < 0.35) {
-        starFieldMaterial.opacity += 0.015;
-      }
 
       // Rotate particles strictly around their own tilted imaginary axis
       particles.rotation.y = spinAngle;
-      
-      // Drift the background starfield slowly
-      starField.rotation.y += 0.0004;
-      starField.rotation.x += 0.0001;
       
       // Tilting parallax on the outer group (stand)
       globeGroup.rotation.x = -targetY * 0.8;
@@ -276,13 +295,14 @@ export default function HeroCanvas() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
       
       // Dispose Geometries and Materials
       pointsGeometry.dispose();
       pointsMaterial.dispose();
       particleTexture.dispose();
-      starFieldGeometry.dispose();
-      starFieldMaterial.dispose();
       
       if (renderer) {
         renderer.dispose();

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -18,7 +19,8 @@ import {
   GraduationCap,
   Factory,
   Store,
-  Compass
+  Compass,
+  Mail
 } from "lucide-react";
 
 // Dynamically import the Three.js Canvas component with SSR disabled
@@ -28,6 +30,25 @@ const HeroCanvas = dynamic(() => import("@/components/HeroCanvas"), {
 });
 
 export default function Home() {
+  const [activeCtaTab, setActiveCtaTab] = useState<"solutions" | "contact" | null>(null);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+
+  useEffect(() => {
+    setIsMobileDevice(window.innerWidth < 768);
+    const handleResize = () => setIsMobileDevice(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+
+    const handleWindowClick = () => {
+      setActiveCtaTab(null);
+    };
+    window.addEventListener("click", handleWindowClick);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("click", handleWindowClick);
+    };
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -149,21 +170,87 @@ export default function Home() {
             </motion.p>
 
             {/* Actions */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 mt-6">
-              <Link
-                href="/solutions"
-                className="px-8 py-3 rounded-full bg-[#0071e3] text-white font-sans font-semibold text-sm hover:bg-[#0058b0] transition-all shadow-sm"
+            <div className="flex flex-row items-center justify-center md:justify-start gap-3 mt-6 mb-12 md:mb-0 w-full">
+              {/* Solutions Button */}
+              <motion.div
+                animate={{ 
+                  width: isMobileDevice
+                    ? (activeCtaTab === "solutions" ? 170 : 44) 
+                    : "auto"
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                onClick={(e) => {
+                  if (isMobileDevice) {
+                    e.stopPropagation();
+                    if (activeCtaTab !== "solutions") {
+                      setActiveCtaTab("solutions");
+                    }
+                  }
+                }}
+                className="h-11 rounded-full bg-[#0071e3] text-white flex items-center justify-center overflow-hidden cursor-pointer shadow-sm"
+                style={{ width: isMobileDevice ? 44 : "auto" }}
               >
-                Explore Solutions
-              </Link>
-              <Link
-                href="/contact"
-                className="group flex items-center gap-1.5 font-sans font-semibold text-sm text-[#38bdf8] hover:text-white hover:underline transition-colors"
+                <Link 
+                  href="/solutions" 
+                  onClick={(e) => {
+                    if (isMobileDevice && activeCtaTab !== "solutions") {
+                      e.preventDefault();
+                    }
+                  }}
+                  className="flex items-center justify-center px-3.5 gap-2 w-full h-full"
+                >
+                  <Compass className="w-5 h-5 shrink-0" />
+                  <span className="font-sans font-semibold text-xs whitespace-nowrap md:inline hidden">
+                    Explore Solutions
+                  </span>
+                  {activeCtaTab === "solutions" && (
+                    <span className="font-sans font-semibold text-xs whitespace-nowrap md:hidden inline">
+                      Explore Solutions
+                    </span>
+                  )}
+                </Link>
+              </motion.div>
+
+              {/* Contact Button */}
+              <motion.div
+                animate={{ 
+                  width: isMobileDevice
+                    ? (activeCtaTab === "contact" ? 155 : 44) 
+                    : "auto"
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                onClick={(e) => {
+                  if (isMobileDevice) {
+                    e.stopPropagation();
+                    if (activeCtaTab !== "contact") {
+                      setActiveCtaTab("contact");
+                    }
+                  }
+                }}
+                className="h-11 rounded-full border border-blue-500/25 bg-blue-500/10 text-[#38bdf8] flex items-center justify-center overflow-hidden cursor-pointer hover:text-white"
+                style={{ width: isMobileDevice ? 44 : "auto" }}
               >
-                Contact our team
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </motion.div>
+                <Link 
+                  href="/contact" 
+                  onClick={(e) => {
+                    if (isMobileDevice && activeCtaTab !== "contact") {
+                      e.preventDefault();
+                    }
+                  }}
+                  className="flex items-center justify-center px-3.5 gap-2 w-full h-full"
+                >
+                  <Mail className="w-5 h-5 shrink-0" />
+                  <span className="font-sans font-semibold text-xs whitespace-nowrap md:inline hidden">
+                    Contact Team
+                  </span>
+                  {activeCtaTab === "contact" && (
+                    <span className="font-sans font-semibold text-xs whitespace-nowrap md:hidden inline">
+                      Contact Team
+                    </span>
+                  )}
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

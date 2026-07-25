@@ -81,6 +81,30 @@ export default function HeroCanvas() {
     const particles = new THREE.Points(pointsGeometry, pointsMaterial);
     tiltedGlobe.add(particles);
 
+    // Background floating dust particles (Starfield)
+    const starFieldGeometry = new THREE.BufferGeometry();
+    const starFieldCount = 200;
+    const starFieldPositions = new Float32Array(starFieldCount * 3);
+    for (let i = 0; i < starFieldCount * 3; i += 3) {
+      starFieldPositions[i] = (Math.random() - 0.5) * 80;
+      starFieldPositions[i + 1] = (Math.random() - 0.5) * 80;
+      starFieldPositions[i + 2] = (Math.random() - 0.5) * 80;
+    }
+    starFieldGeometry.setAttribute("position", new THREE.BufferAttribute(starFieldPositions, 3));
+    
+    const starFieldMaterial = new THREE.PointsMaterial({
+      color: 0x38bdf8,
+      size: 0.22,
+      map: particleTexture,
+      transparent: true,
+      opacity: 0.0, // Fade in along with globe
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    
+    const starField = new THREE.Points(starFieldGeometry, starFieldMaterial);
+    scene.add(starField);
+
     // Load World Map Image & Sample Pixels
     const img = new Image();
     img.src = "/earth-water.png";
@@ -205,9 +229,16 @@ export default function HeroCanvas() {
       if (pointsMaterial.opacity < 0.6) {
         pointsMaterial.opacity += 0.015;
       }
+      if (starFieldMaterial.opacity < 0.35) {
+        starFieldMaterial.opacity += 0.015;
+      }
 
       // Rotate particles strictly around their own tilted imaginary axis
       particles.rotation.y = spinAngle;
+      
+      // Drift the background starfield slowly
+      starField.rotation.y += 0.0004;
+      starField.rotation.x += 0.0001;
       
       // Tilting parallax on the outer group (stand)
       globeGroup.rotation.x = -targetY * 0.8;
@@ -250,6 +281,8 @@ export default function HeroCanvas() {
       pointsGeometry.dispose();
       pointsMaterial.dispose();
       particleTexture.dispose();
+      starFieldGeometry.dispose();
+      starFieldMaterial.dispose();
       
       if (renderer) {
         renderer.dispose();

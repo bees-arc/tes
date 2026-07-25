@@ -137,6 +137,10 @@ export default function Home() {
         {/* Siri-style Wave Background */}
         <HeroCanvas />
 
+        {/* Ambient Glowing Nebula Lights */}
+        <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] bg-blue-500/10 rounded-full blur-[80px] pointer-events-none animate-pulse z-0" style={{ animationDuration: "8s" }} />
+        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse z-0" style={{ animationDuration: "12s" }} />
+
         {/* Soft radial grid overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-40 z-0" style={{ backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent pointer-events-none z-0" />

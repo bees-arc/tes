@@ -35,7 +35,12 @@ export default function HeroCanvas() {
     scene.add(globeGroup);
 
     // Shift globe right responsively on start
-    globeGroup.position.x = window.innerWidth < 768 ? 0 : 18.5;
+    const isMobile = window.innerWidth < 768;
+    globeGroup.position.x = isMobile ? 0 : 18.5;
+    globeGroup.position.y = isMobile ? -12 : 0;
+    if (isMobile) {
+      globeGroup.scale.set(0.65, 0.65, 0.65);
+    }
 
     // Procedural Circle Glowing Particle Texture
     const createCircleTexture = () => {
@@ -222,7 +227,15 @@ export default function HeroCanvas() {
       renderer.setSize(width, window.innerHeight);
 
       // Responsive shifting on resize
-      globeGroup.position.x = width < 768 ? 0 : 18.5;
+      if (width < 768) {
+        globeGroup.position.x = 0;
+        globeGroup.position.y = -12;
+        globeGroup.scale.set(0.65, 0.65, 0.65);
+      } else {
+        globeGroup.position.x = 18.5;
+        globeGroup.position.y = 0;
+        globeGroup.scale.set(1.0, 1.0, 1.0);
+      }
     };
 
     window.addEventListener("resize", handleResize);

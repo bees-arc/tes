@@ -128,7 +128,7 @@ export default function Home() {
             className="flex flex-col items-center md:items-start text-center md:text-left gap-6 max-w-2xl"
           >
             {/* Status Chip */}
-            <motion.div variants={itemVariants} className="px-3.5 py-1 rounded-full border border-blue-500/25 bg-blue-500/10 font-sans text-xs tracking-normal text-blue-400 font-semibold shadow-sm">
+            <motion.div variants={itemVariants} className="hidden md:inline-block px-3.5 py-1 rounded-full border border-blue-500/25 bg-blue-500/10 font-sans text-xs tracking-normal text-blue-400 font-semibold shadow-sm">
               Enterprise Technology Solutions
             </motion.div>
 
@@ -143,7 +143,7 @@ export default function Home() {
             {/* Subheading */}
             <motion.p 
               variants={itemVariants} 
-              className="text-lg md:text-xl text-slate-300 max-w-xl font-sans leading-relaxed"
+              className="text-sm sm:text-base md:text-xl text-slate-300 max-w-xl font-sans leading-relaxed"
             >
               We deliver end-to-end technology solutions across software development, automation, IoT, AI, embedded systems, robotics, digital platforms, and smart business solutions.
             </motion.p>

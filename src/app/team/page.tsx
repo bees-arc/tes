@@ -251,16 +251,16 @@ export default function Team() {
                 className="apple-card p-6 flex flex-col justify-between hover:shadow-apple-hover transition-colors shadow-sm rounded-2xl"
               >
                 <div>
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-3 mb-4 gap-1.5 sm:gap-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center">
+                      <div className="w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center shrink-0">
                         {team.icon}
                       </div>
                       <span className="font-sans font-bold text-[#1d1d1f] text-sm">
                         {team.team}
                       </span>
                     </div>
-                    <span className="font-sans text-xs text-slate-400 font-semibold">{team.count}</span>
+                    <span className="font-sans text-xs text-slate-400 font-semibold pl-9 sm:pl-0">{team.count}</span>
                   </div>
                   
                   <p className="text-[#86868b] text-xs leading-relaxed mb-6 font-sans">

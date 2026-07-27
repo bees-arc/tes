@@ -17,77 +17,55 @@ import {
 export default function Team() {
   const leadership = [
     {
-      name: "Dr. Elena Vance",
-      role: "Founder & Director of Systems Engineering",
-      bio: "Elena holds a PhD in Mechatronics and Systems Architectures. She spent 12 years coordinating warehouse automation expansions for tier-one logistics networks globally.",
-      email: "elena.vance@tes-solutions.sys",
-      linkedIn: "https://linkedin.com",
-    },
-    {
-      name: "Marcus Sterling",
-      role: "Partner & Chief Software Architect",
-      bio: "Marcus has led enterprise software integrations for 15+ years. He specializes in low latency distributed systems, offline-first mobile sync layers, and ERP integrations.",
-      email: "marcus.sterling@tes-solutions.sys",
+      name: "Mr. Kasun Daundasekara",
+      role: "Founder & Director",
+      education: "BSc in Biomedical Engineering (Arizona State University)",
+      bio: "Provides strategic leadership, defines the company's vision, drives innovation, and oversees business growth and technology strategy.",
+      email: "kasun.d@tes-solutions.sys",
       linkedIn: "https://linkedin.com",
     }
   ];
 
   const technicalTeams = [
     {
-      team: "Software Team",
-      lead: "Sarah Chen",
-      count: "8 Engineers",
-      icon: <Code2 className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Web platforms, high scalability ERP platforms, secure database routing pipelines, and APIs.",
-      stack: ["Next.js", "Node.js", "TypeScript", "PostgreSQL", "GraphQL"]
-    },
-    {
       team: "AI & Data Team",
-      lead: "Dr. Aris Thorne",
-      count: "5 Researchers",
+      lead: "Sheshan Hebron",
+      degree: "BSc (Hons) in Cloud Computing",
       icon: <BrainCircuit className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Computer vision classifiers, predictive logistics models, route path optimizers, and data pipelines.",
-      stack: ["Python", "TensorFlow", "OpenCV", "PyTorch", "Pandas"]
+      focus: "Leads artificial intelligence, machine learning, cloud computing, data engineering, analytics, and intelligent automation solutions.",
+      stack: ["Python", "TensorFlow", "Cloud Computing", "Data Pipelines", "Automation"]
     },
     {
-      team: "IoT Team",
-      lead: "Liam O'Connor",
-      count: "6 Engineers",
-      icon: <Network className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Wireless sensor arrays, telemetry trackers, LoRaWAN networks, and real-time socket interfaces.",
-      stack: ["C++", "MQTT", "WebSockets", "Node.js", "Redis"]
-    },
-    {
-      team: "Embedded Team",
-      lead: "Devon Miller",
-      count: "4 Hardware Designers",
+      team: "Embedded Systems Team",
+      lead: "Duvindu Eshan",
+      degree: "BSc (Hons) in Mechatronics Engineering",
       icon: <Cpu className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Multi-layered high frequency PCB designs, firmware coding, logic analyzer tests, and prototype assembly.",
-      stack: ["Altium Designer", "ESP32", "STM32", "Arduino"]
+      focus: "Leads embedded firmware development, PCB design, microcontroller programming, hardware integration, and real-time embedded systems.",
+      stack: ["C/C++", "PCB Design", "ESP32 / STM32", "Altium Designer", "Firmware"]
     },
     {
-      team: "Robotics Team",
-      lead: "Kaito Sato",
-      count: "5 Automation Experts",
+      team: "IoT & Robotics Team",
+      lead: "Duvindu Eshan",
+      degree: "BSc (Hons) in Mechatronics Engineering",
       icon: <Bot className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Automated warehouse sorting controllers, motor driving logic, and PLC programming for sorting belts.",
-      stack: ["ROS 2", "C++", "Python", "PLC Logic", "Modbus"]
-    },
-    {
-      team: "UI/UX Team",
-      lead: "Maya Lin",
-      count: "3 Designers",
-      icon: <Eye className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Sleek industrial visual interfaces, mobile route sheets wireframing, user persona mapping, and design tokens.",
-      stack: ["Figma", "Tailwind CSS", "Framer Motion"]
+      focus: "Leads IoT platform development, robotics systems, industrial automation, sensor integration, smart devices, and intelligent control solutions.",
+      stack: ["ROS 2", "IoT Platforms", "Industrial Automation", "Sensor Integration", "Control Systems"]
     },
     {
       team: "QA & Integration Team",
-      lead: "Victor Vance",
-      count: "4 Engineers",
+      lead: "Sheshan Hebron",
+      degree: "BSc (Hons) in Cloud Computing",
       icon: <CheckCircle className="w-5 h-5 text-[#0071e3]" />,
-      focus: "Automated integration runs, end-to-end user path flows testing, circuit load tests, and hardware compliance.",
-      stack: ["Cypress", "Playwright", "Jest", "CI/CD Actions"]
+      focus: "Leads quality assurance, software and hardware testing, system validation, continuous integration, performance testing, and end-to-end solution integration to ensure reliable and high-quality products.",
+      stack: ["Playwright", "Jest / Cypress", "System Validation", "CI/CD Actions", "Hardware Testing"]
+    },
+    {
+      team: "UI/UX Team",
+      lead: "Ravindu Dananjith",
+      degree: "BSc (Hons) in Interaction Design",
+      icon: <Eye className="w-5 h-5 text-[#0071e3]" />,
+      focus: "Leads user interface and user experience design, creating intuitive, accessible, and visually engaging digital products that deliver exceptional user experiences.",
+      stack: ["Figma", "Tailwind CSS", "Interaction Design", "Wireframing", "User Journeys"]
     }
   ];
 
@@ -206,8 +184,11 @@ export default function Team() {
               >
                 <div>
                   <h3 className="font-sans font-bold text-[#1d1d1f] text-2xl mb-1">{leader.name}</h3>
-                  <p className="font-sans text-xs text-[#0071e3] uppercase tracking-wider mb-6 font-semibold">
+                  <p className="font-sans text-xs text-[#0071e3] uppercase tracking-wider mb-1 font-semibold">
                     {leader.role}
+                  </p>
+                  <p className="font-sans text-[11px] text-slate-400 mb-6 font-medium">
+                    {leader.education}
                   </p>
                   <p className="text-[#86868b] text-sm leading-relaxed mb-8 font-sans">
                     {leader.bio}
@@ -248,7 +229,7 @@ export default function Team() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.04 }}
-                className="apple-card p-6 flex flex-col justify-between hover:shadow-apple-hover transition-colors shadow-sm rounded-2xl"
+                className="apple-card p-6 flex flex-col justify-between hover:shadow-apple-hover transition-colors shadow-sm rounded-2xl bg-white"
               >
                 <div>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-3 mb-4 gap-1.5 sm:gap-4">
@@ -260,7 +241,6 @@ export default function Team() {
                         {team.team}
                       </span>
                     </div>
-                    <span className="font-sans text-xs text-slate-400 font-semibold pl-9 sm:pl-0">{team.count}</span>
                   </div>
                   
                   <p className="text-[#86868b] text-xs leading-relaxed mb-6 font-sans">
@@ -269,7 +249,10 @@ export default function Team() {
                 </div>
 
                 <div className="font-sans text-xs text-[#86868b] pt-4 border-t border-slate-100 space-y-1">
-                  <div>LEAD: <span className="text-[#1d1d1f] font-bold">{team.lead}</span></div>
+                  <div className="flex items-baseline justify-between flex-wrap gap-1.5">
+                    <div>LEAD: <span className="text-[#1d1d1f] font-bold">{team.lead}</span></div>
+                  </div>
+                  <div className="text-[10px] text-slate-400/90 font-medium leading-none mb-2">{team.degree}</div>
                   <div className="flex flex-wrap gap-1 mt-2">
                     {team.stack.map((item) => (
                       <span key={item} className="px-2.5 py-0.5 rounded-full bg-slate-50 border border-slate-200/50 text-[10px] text-slate-600 font-medium">

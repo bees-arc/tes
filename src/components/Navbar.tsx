@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,13 +43,14 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <svg viewBox="0 0 120 40" className="w-[110px] h-[36px] select-none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="2" width="100" height="3.5" rx="1" fill="#0A2540" />
-              <text x="13" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#E31837">T</text>
-              <text x="50" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#0071E3">E</text>
-              <text x="87" y="24" fontFamily="var(--font-sans), sans-serif" fontSize="23" fontWeight="900" fill="#1D1D1F">S</text>
-              <text x="13" y="34" fontFamily="var(--font-sans), sans-serif" fontSize="7.5" fontWeight="600" letterSpacing="2.8" fill="#1D1D1F">SOLUTIONS</text>
-            </svg>
+            <Image
+              src="/tes-logo.png"
+              alt="TES Solutions Logo"
+              width={41}
+              height={36}
+              className="object-contain select-none"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

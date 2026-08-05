@@ -85,12 +85,25 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800/80 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-sans text-[11px] text-slate-400">
-          <div className="flex items-center gap-2">
+        <div className="border-t border-slate-800/80 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 font-sans text-[11px] text-slate-400">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <span>&copy; {currentYear} TES Solutions Systems Inc. All rights reserved.</span>
+            <div className="flex items-center gap-4 text-[10px] font-medium text-slate-500">
+              <Link href="/return-policy" className="hover:text-white transition-colors">
+                Return Policy
+              </Link>
+              <span className="text-slate-700">|</span>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <span className="text-slate-700">|</span>
+              <Link href="/terms-conditions" className="hover:text-white transition-colors">
+                Terms & Conditions
+              </Link>
+            </div>
           </div>
 
-          <div className="flex items-center gap-6 font-medium text-[10px]">
+          <div className="flex items-center gap-6 font-medium text-[10px] shrink-0">
             <span className="flex items-center gap-1">
               <Globe className="w-3.5 h-3.5" />
               GLOBAL OPERATIONS // ASIA PACIFIC
